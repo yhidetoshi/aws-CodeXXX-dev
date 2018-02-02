@@ -1,5 +1,9 @@
 # aws-CodeXXX-dev
-aws Code buildテスト用リポジトリ
+- aws CodeCommit
+- aws CodeBuild
+- aws CodePipline
+
+を利用してみる。
 
 ### aws-code-commit
 - codecommitにリポジトリを作成
