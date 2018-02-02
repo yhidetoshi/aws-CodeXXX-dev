@@ -43,3 +43,21 @@ artifacts:
   files:
     - helloworld.py
 ```
+
+- ビルドログ
+```
+・・・
+[Container] 2018/02/02 05:12:33 Running command echo Compiling the Python code...
+Compiling the Python code...
+
+[Container] 2018/02/02 05:12:33 Running command python helloworld.py
+hello world!!!!
+
+[Container] 2018/02/02 05:12:33 Phase complete: BUILD Success: true
+[Container] 2018/02/02 05:12:33 Phase context status code: Message: 
+[Container] 2018/02/02 05:12:33 Entering phase POST_BUILD
+[Container] 2018/02/02 05:12:33 Running command echo Build completed on `date`
+Build completed on Fri Feb 2 05:12:33 UTC 2018
+・・・
+```
+```
