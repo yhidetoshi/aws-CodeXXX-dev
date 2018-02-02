@@ -1,6 +1,18 @@
-# aws-code-build-test
+# aws-CodeXXX-dev
 aws Code buildテスト用リポジトリ
 
+### aws-code-commit
+- codecommitにリポジトリを作成
+- SSHで接続するので
+  - IAMユーザにsshの公開鍵を保存
+  - .ssh/configに以下を追加
+```
+Host git-codecommit.*.amazonaws.com
+  User <SSH-KEY-ID>
+  IdentityFile ~/.ssh/<SECRET-KEY>
+```
+
+### aws-code-build
 - gitの構成
 ```
 aws-code-build-test
