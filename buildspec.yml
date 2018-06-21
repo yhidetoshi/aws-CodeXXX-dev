@@ -1,8 +1,14 @@
 version: 0.2
 
+
+env:
+  parameter-store:
+    WELCOME: "welcome"
+
 phases:
   build:
     commands:
+      - echo $WELCOME
       - echo Build started on `date`
       - echo Compiling the Python code...
       - python helloworld.py
