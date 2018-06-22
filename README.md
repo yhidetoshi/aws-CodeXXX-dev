@@ -34,12 +34,4 @@
 - 実行環境
   - aws/codebuild/python:3.6.5 (コンテナイメージ)
 
-- gitの構成
-```
-aws-code-build-test
-├── buildspec.yml
-└── helloworld.py
-
-0 directories, 2 files
-```
 
