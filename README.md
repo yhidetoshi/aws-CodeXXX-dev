@@ -57,14 +57,18 @@ aws-code-build-test
 ```
 version: 0.2
 
-
 env:
   parameter-store:
     hello: "welcome"
 
 phases:
+  install:
+    commands:
+      - pip install awscli
+
   build:
     commands:
+      - pip list
       - echo ${hello}
       - echo Build started on `date`
       - echo Compiling the Python code...
@@ -79,6 +83,11 @@ artifacts:
 
 - ビルドログ
 ```
+[Container] 2018/06/22 03:18:54 Running command pip list
+Package          Version  
+---------------- ---------
+awscli           1.15.31
+・・・
 [Container] 2018/06/22 02:56:05 Running command echo ${hello}
 helloWorld
 
