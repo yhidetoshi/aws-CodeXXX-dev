@@ -5,16 +5,6 @@
 
 を利用してみる。
 
-### aws-code-commit
-- codecommitにリポジトリを作成
-- SSHで接続するので
-  - IAMユーザにsshの公開鍵を保存
-  - .ssh/configに以下を追加
-```
-Host git-codecommit.*.amazonaws.com
-  User <SSH-KEY-ID>
-  IdentityFile ~/.ssh/<SECRET-KEY>
-```
 
 ### パラメータストア
 - パラメータストアにデータを格納
@@ -53,50 +43,3 @@ aws-code-build-test
 0 directories, 2 files
 ```
 
-- 配置した `buildspec.yml` 
-```
-version: 0.2
-
-env:
-  parameter-store:
-    hello: "welcome"
-
-phases:
-  install:
-    commands:
-      - pip install awscli
-
-  build:
-    commands:
-      - pip list
-      - echo ${hello}
-      - echo Build started on `date`
-      - echo Compiling the Python code...
-      - python helloworld.py
-  post_build:
-    commands:
-      - echo Build completed on `date`
-artifacts:
-  files:
-    - helloworld.py
-```
-
-- ビルドログ
-```
-[Container] 2018/06/22 03:18:54 Running command pip list
-Package          Version  
----------------- ---------
-awscli           1.15.31
-・・・
-[Container] 2018/06/22 02:56:05 Running command echo ${hello}
-helloWorld
-
-[Container] 2018/06/22 02:56:05 Running command echo Build started on `date`
-Build started on Fri Jun 22 02:56:05 UTC 2018
-
-[Container] 2018/06/22 02:56:05 Running command echo Compiling the Python code...
-Compiling the Python code...
-
-[Container] 2018/06/22 02:56:05 Running command python helloworld.py
-hello world!!!!
-```
