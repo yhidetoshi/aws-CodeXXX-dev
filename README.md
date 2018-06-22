@@ -30,9 +30,15 @@ aws-code-build-test
 ```
 version: 0.2
 
+
+env:
+  parameter-store:
+    hello: "welcome"
+
 phases:
   build:
     commands:
+      - echo ${hello}
       - echo Build started on `date`
       - echo Compiling the Python code...
       - python helloworld.py
@@ -46,18 +52,15 @@ artifacts:
 
 - ビルドログ
 ```
-・・・
-[Container] 2018/02/02 05:12:33 Running command echo Compiling the Python code...
+[Container] 2018/06/22 02:56:05 Running command echo ${hello}
+helloWorld
+
+[Container] 2018/06/22 02:56:05 Running command echo Build started on `date`
+Build started on Fri Jun 22 02:56:05 UTC 2018
+
+[Container] 2018/06/22 02:56:05 Running command echo Compiling the Python code...
 Compiling the Python code...
 
-[Container] 2018/02/02 05:12:33 Running command python helloworld.py
+[Container] 2018/06/22 02:56:05 Running command python helloworld.py
 hello world!!!!
-
-[Container] 2018/02/02 05:12:33 Phase complete: BUILD Success: true
-[Container] 2018/02/02 05:12:33 Phase context status code: Message: 
-[Container] 2018/02/02 05:12:33 Entering phase POST_BUILD
-[Container] 2018/02/02 05:12:33 Running command echo Build completed on `date`
-Build completed on Fri Feb 2 05:12:33 UTC 2018
-・・・
-```
 ```
