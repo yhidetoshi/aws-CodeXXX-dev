@@ -6,6 +6,10 @@ env:
     hello: "welcome"
 
 phases:
+  install:
+    commands:
+      - pip install awscli
+
   build:
     commands:
       - echo ${hello}
