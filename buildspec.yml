@@ -12,6 +12,7 @@ phases:
 
   build:
     commands:
+      - pip list
       - echo ${hello}
       - echo Build started on `date`
       - echo Compiling the Python code...
