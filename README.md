@@ -40,7 +40,10 @@ Host git-codecommit.*.amazonaws.com
 }
 ```
 
-### aws-code-build
+## aws-code-build
+- 実行環境
+  - aws/codebuild/python:3.6.5 (コンテナイメージ)
+
 - gitの構成
 ```
 aws-code-build-test
