@@ -16,7 +16,34 @@ Host git-codecommit.*.amazonaws.com
   IdentityFile ~/.ssh/<SECRET-KEY>
 ```
 
-### aws-code-build
+### パラメータストア
+- パラメータストアにデータを格納
+```
+❯❯❯ aws ssm put-parameter --name "welcome" --type "String" --value "helloWorld"
+{
+    "Version": 1
+}
+```
+- 格納したデータを確認
+```
+❯❯❯ aws ssm get-parameters --name welcome                                                    ✘ 2
+{
+    "Parameters": [
+        {
+            "Name": "welcome",
+            "Type": "String",
+            "Value": "helloWorld",
+            "Version": 1
+        }
+    ],
+    "InvalidParameters": []
+}
+```
+
+## aws-code-build
+- 実行環境
+  - aws/codebuild/python:3.6.5 (コンテナイメージ)
+
 - gitの構成
 ```
 aws-code-build-test
@@ -30,9 +57,15 @@ aws-code-build-test
 ```
 version: 0.2
 
+
+env:
+  parameter-store:
+    hello: "welcome"
+
 phases:
   build:
     commands:
+      - echo ${hello}
       - echo Build started on `date`
       - echo Compiling the Python code...
       - python helloworld.py
@@ -46,18 +79,15 @@ artifacts:
 
 - ビルドログ
 ```
-・・・
-[Container] 2018/02/02 05:12:33 Running command echo Compiling the Python code...
+[Container] 2018/06/22 02:56:05 Running command echo ${hello}
+helloWorld
+
+[Container] 2018/06/22 02:56:05 Running command echo Build started on `date`
+Build started on Fri Jun 22 02:56:05 UTC 2018
+
+[Container] 2018/06/22 02:56:05 Running command echo Compiling the Python code...
 Compiling the Python code...
 
-[Container] 2018/02/02 05:12:33 Running command python helloworld.py
+[Container] 2018/06/22 02:56:05 Running command python helloworld.py
 hello world!!!!
-
-[Container] 2018/02/02 05:12:33 Phase complete: BUILD Success: true
-[Container] 2018/02/02 05:12:33 Phase context status code: Message: 
-[Container] 2018/02/02 05:12:33 Entering phase POST_BUILD
-[Container] 2018/02/02 05:12:33 Running command echo Build completed on `date`
-Build completed on Fri Feb 2 05:12:33 UTC 2018
-・・・
-```
 ```
