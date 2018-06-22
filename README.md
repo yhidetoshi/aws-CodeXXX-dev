@@ -16,6 +16,23 @@ Host git-codecommit.*.amazonaws.com
   IdentityFile ~/.ssh/<SECRET-KEY>
 ```
 
+### パラメータストア
+- パラメータストアにデータを格納
+```
+❯❯❯ aws ssm get-parameters --name welcome                                                    ✘ 2
+{
+    "Parameters": [
+        {
+            "Name": "welcome",
+            "Type": "String",
+            "Value": "helloWorld",
+            "Version": 1
+        }
+    ],
+    "InvalidParameters": []
+}
+```
+
 ### aws-code-build
 - gitの構成
 ```
