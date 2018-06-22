@@ -2,9 +2,8 @@ version: 0.2
 
 
 env:
-  variables:
-    parameter-store:
-      hello: "welcome"
+  parameter-store:
+    hello: "welcome"
 
 phases:
   build:
