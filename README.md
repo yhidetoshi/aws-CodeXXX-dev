@@ -19,6 +19,13 @@ Host git-codecommit.*.amazonaws.com
 ### パラメータストア
 - パラメータストアにデータを格納
 ```
+❯❯❯ aws ssm put-parameter --name "welcome" --type "String" --value "helloWorld"
+{
+    "Version": 1
+}
+```
+- 格納したデータを確認
+```
 ❯❯❯ aws ssm get-parameters --name welcome                                                    ✘ 2
 {
     "Parameters": [
